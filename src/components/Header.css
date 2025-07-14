@@ -18,7 +18,7 @@
 }
  
 .logo {
-  font-size: 16px;
+  font-size: 32px;
   font-weight: bold;
   color: #333;
   margin: 0;
@@ -27,7 +27,7 @@
  
 .search-bar {
   flex: 2;
-  max-width: 400px;
+  max-width: 4000px;
   margin: 0 2rem;
   position: relative;
 }
@@ -52,13 +52,13 @@
  
 .search-button {
   position: absolute;
-  right: 8px;
+  right: 10px;
   top: 50%;
   transform: translateY(-50%);
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 0.1rem;
   border-radius: 50%;
   color: #666;
   display: flex;
@@ -92,4 +92,11 @@
  
 .cart-button:hover {
   background-color: #f0f0f0;
+}
+
+.header-nav {
+ background: none;
+ border: none;
+ letter-spacing: 0.5px;
+ font-size: 12px;
 }

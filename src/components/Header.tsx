@@ -11,9 +11,7 @@ function Header() {
     setTextoBusca(e.target.value);
   }
 
-  function onClickSearch(
-    event: React.MouseEvent<HTMLButtonElement>
-  ): void {
+  function onClickSearch(event: React.MouseEvent<HTMLButtonElement>): void {
     console.log(`Você pesquisou por: ${textoBusca}`);
   }
 
@@ -46,7 +44,13 @@ function Header() {
         </div>
       </div>
 
-      <nav className="header-nav">{textoBusca && <h6>{textoBusca}</h6>}</nav>
+      <nav className="header-nav">
+        <div>Menu de Navegação:</div>
+        <div></div>
+        <div> BannerPromocional</div>
+
+        {textoBusca && <h6>{textoBusca}</h6>}
+      </nav>
     </header>
   );
 }
