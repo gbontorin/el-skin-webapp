@@ -45,11 +45,18 @@ function Header() {
       </div>
 
       <nav className="header-nav">
-        <div>Menu de Navegação:</div>
-        <div></div>
-        <div> BannerPromocional</div>
+        <div>
+          <ul>
+            <li>Categorias</li>
+            <li>Tipo de Pele</li>
+            <li>Necessidade</li>
+            <li>Ingredientes</li>
+          </ul>
+        </div>
 
-        {textoBusca && <h6>{textoBusca}</h6>}
+        <div className="Promocao"> <ul> <li className="Promocao"> Kits até 50% OFF </li></ul></div>
+
+        {/*textoBusca && <h6>{textoBusca}</h6>*/}
       </nav>
     </header>
   );
