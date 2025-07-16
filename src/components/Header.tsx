@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import "./Header.css";
+import React, { useState } from 'react';
+import './Header.css';
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping, faSearch } from "@fortawesome/free-solid-svg-icons"; // Ou outra variação se precisar
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartShopping, faSearch } from '@fortawesome/free-solid-svg-icons'; // Ou outra variação se precisar
 
 function Header() {
-  const [textoBusca, setTextoBusca] = useState("valor inicial do texto");
+  const [textoBusca, setTextoBusca] = useState('valor inicial do texto');
 
   function handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
     setTextoBusca(e.target.value);
   }
 
-  function onClickSearch(event: React.MouseEvent<HTMLButtonElement>): void {
+  function onClickSearch(e: React.MouseEvent<HTMLButtonElement>): void {
     console.log(`Você pesquisou por: ${textoBusca}`);
   }
 

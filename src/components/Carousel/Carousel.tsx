@@ -1,6 +1,6 @@
-import Img1 from "../../assets/img1.png";
-import Img2 from "../../assets/img2.png";
-import Img3 from "../../assets/img3.png";
+import Img1 from '../../assets/img1.png';
+import Img2 from '../../assets/img2.png';
+import Img3 from '../../assets/img3.png';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
@@ -19,21 +19,21 @@ interface ICarouselItem {
 function Carousel() {
   const items: ICarouselItem[] = [
     {
-      subtitle: "confira nossa linha",
-      title: "corporal",
-      description: "com benefícios além da hidratação",
+      subtitle: 'confira nossa linha',
+      title: 'corporal',
+      description: 'com benefícios além da hidratação',
       backgroundImage: Img1,
     },
     {
-      subtitle: "toda linha",
-      title: "anti-age",
-      description: "use o cupom ANTIAGE15",
+      subtitle: 'toda linha',
+      title: 'anti-age',
+      description: 'use o cupom ANTIAGE15',
       backgroundImage: Img2,
     },
     {
-      subtitle: "",
-      title: "kits incríveis",
-      description: "até 50% OFF",
+      subtitle: '',
+      title: 'kits incríveis',
+      description: 'até 50% OFF',
       backgroundImage: Img3,
     },
   ];
@@ -51,14 +51,14 @@ function Carousel() {
   }
 
   useEffect(() => {
-    console.log("criou o interval....");
+    console.log('criou o interval....');
     const timer = setInterval(() => {
-      console.log("ciclou o elemento....");
+      console.log('ciclou o elemento....');
       setIdxItemAtual((prevIdxItemAtual) => { return (prevIdxItemAtual + 1) % items.length; });
     }, 3000);
 
     return () => {
-      console.log("limpou o interval....");
+      console.log('limpou o interval....');
       clearInterval(timer);
     };
   }, []);
@@ -81,7 +81,7 @@ function Carousel() {
               width="60"
               height="24"
               icon={faAngleLeft}
-              style={{ color: "white" }}
+              style={{ color: 'white' }}
             />
           </button>
 
@@ -110,7 +110,7 @@ function Carousel() {
               width="60"
               height="24"
               icon={faAngleRight}
-              style={{ color: "white" }}
+              style={{ color: 'white' }}
             />
           </button>
         </div>
