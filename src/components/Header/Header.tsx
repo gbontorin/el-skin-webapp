@@ -11,7 +11,8 @@ function Header() {
     setTextoBusca(e.target.value);
   }
 
-  function onClickSearch(e: React.MouseEvent<HTMLButtonElement>): void {
+  //function onClickSearch(e: React.MouseEvent<HTMLButtonElement>): void {
+  function onClickSearch( ): void {
     console.log(`Você pesquisou por: ${textoBusca}`);
   }
 
