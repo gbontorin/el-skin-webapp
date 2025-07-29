@@ -55,7 +55,7 @@ Adicione o conteúdo ao arquivo: Cole o seguinte código no arquivo pre-commit:
 
 #!/bin/sh
 
-## Executa o ESLint em todos os arquivos JavaScript/JSX/TS/TSX adicionados ao commit
+# Executa o ESLint em todos os arquivos JavaScript/JSX/TS/TSX adicionados ao commit
 if git diff --cached --name-only --diff-filter=ACM "*.js" "*.jsx" "*.ts" "*.tsx" | grep -qE "\.(js|jsx|ts|tsx)$"; then
   echo "Executando ESLint..."
   if npx eslint --fix . --ext .js,.jsx,.ts,.tsx; then
