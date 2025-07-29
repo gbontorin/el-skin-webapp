@@ -44,3 +44,27 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+
+
+
+## Para criar um hook de pré-commit que rode o ESLint e impeça commits com violações, siga estes passos: 
+Crie o arquivo de hook: Dentro da pasta .git/hooks do seu projeto, crie um arquivo chamado pre-commit (sem extensão).
+Adicione o conteúdo ao arquivo: Cole o seguinte código no arquivo pre-commit:
+
+#!/bin/sh
+
+## Executa o ESLint em todos os arquivos JavaScript/JSX/TS/TSX adicionados ao commit
+if git diff --cached --name-only --diff-filter=ACM "*.js" "*.jsx" "*.ts" "*.tsx" | grep -qE "\.(js|jsx|ts|tsx)$"; then
+  echo "Executando ESLint..."
+  if npx eslint --fix . --ext .js,.jsx,.ts,.tsx; then
+    echo "ESLint passou. Adicionando alterações corrigidas ao commit."
+    git add .
+  else
+    echo "ESLint falhou. Corrija os erros e tente novamente."
+    exit 1
+  fi
+fi
+
+exit 0
