@@ -46,6 +46,7 @@ function Carousel() {
   const [carouselItems, setCarouselItems] = useState<ICarouselItem[]>([]);
 
   const [idxItemAtual, setIdxItemAtual] = useState(0);
+  
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   useEffect(() => {

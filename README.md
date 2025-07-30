@@ -1,3 +1,8 @@
+## Rodar o Servidor do Carrosel e dos Produtos
+
+npx json-server db.json --port 3001
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
