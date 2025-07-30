@@ -1,5 +1,5 @@
 import React from 'react';
-import './About.css';
+//import './About.css';
 import styled from 'styled-components';
 import About1 from '../../assets/about1.png';
 
@@ -53,8 +53,6 @@ const About: React.FC = () => {
 
       <ContactSection>
         <h2>VAMOS CONVERSAR?</h2>
-        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem.</p>
-
         <ContactButton>
           <ContactIcon>💬</ContactIcon>
           <span>Fale conosco</span>
