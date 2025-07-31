@@ -1,21 +1,44 @@
 import React, { useState } from 'react';
-import './Header.css';
+//import './Header.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faSearch } from '@fortawesome/free-solid-svg-icons'; // Ou outra variação se precisar
 import styled from 'styled-components';
 
+import { useCartContext } from '../../context/CartContext';
+import CartModal from '../CartModal/CartModal';
+
 function Header() {
-  const [textoBusca, setTextoBusca] = useState('valor inicial do texto');
+  const [isCartModalOpen, setIsCartModalOpen] = useState(false);
+  
+  const { items, updateQuantity, removeItem, getTotalItems } = useCartContext();
+  //const { searchTerm, setSearchTerm } = useSearchContext();
 
-  function handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setTextoBusca(e.target.value);
+  /*
+  function handleOnChangeBuscador(e: React.ChangeEvent<HTMLInputElement>) {
+    const valor = e.target.value;
+    setSearchTerm(valor);
+    console.log('Valor buscado:', valor);
   }
 
-  //function onClickSearch(e: React.MouseEvent<HTMLButtonElement>): void {
-  function onClickSearch( ): void {
-    console.log(`Você pesquisou por: ${textoBusca}`);
+  const handleClearSearch = () => {
+    setSearchTerm('');
+  };
+*/
+  function handleOnClickCart() {
+    setIsCartModalOpen(true);
   }
+
+  const handleCloseCart = () => {
+    setIsCartModalOpen(false);
+  };
+
+  const handleFinalizePurchase = () => {
+    console.log('Finalizando compra...');
+    // Aqui você implementaria a lógica de checkout
+    setIsCartModalOpen(false);
+  };
+
 
   return (
     <HeaderStyle>
@@ -29,20 +52,23 @@ function Header() {
             <SearchInput
               type="text"
               placeholder="O que você está procurando?"
-              className="search-input"
-              onChange={handleOnChange}>
+              className="search-input">
+              {/* </SearchBar>onChange={handleOnChange}> */}
             </SearchInput>
           
 
-            <SearchButton
-              onClick={onClickSearch}>
+            <SearchButton>
+              {/*/onClick={onClickSearch}> */}
               <FontAwesomeIcon icon={faSearch} />
             </SearchButton>
           </SearchBar>
 
           <HeaderActions>
-            <CartBoutton>
+            <CartBoutton onClick={handleOnClickCart} data-testid="cart-button" type="button" >
               <FontAwesomeIcon icon={faCartShopping} />
+              {getTotalItems() > 0 && (
+                <span className="cart-badge">{getTotalItems()}</span>
+              )}
             </CartBoutton>
           </HeaderActions>
         </Container>
@@ -62,6 +88,14 @@ function Header() {
 
         {/*textoBusca && <h6>{textoBusca}</h6>*/}
       </HeaderNav>
+      <CartModal
+        isOpen={isCartModalOpen}
+        onClose={handleCloseCart}
+        items={items}
+        onUpdateQuantity={updateQuantity}
+        onRemoveItem={removeItem}
+        onFinalizePurchase={handleFinalizePurchase}
+      />
     </HeaderStyle>
   );
 }

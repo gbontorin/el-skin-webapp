@@ -1,6 +1,9 @@
 import React from 'react';
 import './ProductCard.css';
 
+import { IProduct } from '../../services';
+
+/*
 export interface IProduct {
   id: string;
   name: string;
@@ -12,7 +15,7 @@ export interface IProduct {
     type: 'protection' | 'face';
   }>;
 }
-
+*/
 interface ProductCardProps {
   product: IProduct;
   onProductClick: (productId: string) => void;
@@ -29,7 +32,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
   };
 
   return (
-    <a className="product-card" onClick={() => onProductClick(product.id)}>
+    <a 
+      className="product-card" 
+      onClick={() => onProductClick(product.id)}>
+
       <div className="product-image">
         <img src={product.image} alt={product.name} />
       </div>
