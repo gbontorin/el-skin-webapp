@@ -4,6 +4,7 @@ import AppRouter from './routes';
 import { CartProvider } from './context/CartContext';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './styles/theme';
+import { GlobalStyles } from './styles/GlobalStyles';
 
 //import Theme from './components/Theme/Theme';
 //import styled from 'styled-components';
@@ -11,6 +12,7 @@ import { theme } from './styles/theme';
 function App() {
   return (
     <ThemeProvider theme={theme}>
+      <GlobalStyles />
       <CartProvider>
         <AppRouter />
       </CartProvider>
