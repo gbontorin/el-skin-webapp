@@ -35,6 +35,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
   return (
     <ProductCardStyled
+      data-testid="product-card"
       onClick={() => onProductClick(product.id)}>
 
       <ProductImage>
@@ -56,16 +57,19 @@ const ProductCard: React.FC<ProductCardProps> = ({
           ))}
         </ProductTags>
 
-        <div className="product-footer">
-          <span className="product-price">{formatPrice(product.price)}</span>
-          <button
+        <ProductFooter>
+          <span className="product-price">
+            {formatPrice(product.price)}
+          </span>
+          <button 
+            data-testid="product-buy-button"
             className="product-buy-button"
             onClick={(e) => onBuyClick(product.id, e)}
             type="button"
           >
             comprar
           </button>
-        </div>
+        </ProductFooter>
       </ProductInfo>
     </ProductCardStyled>
   );
@@ -161,28 +165,22 @@ const ProductTag = styled.span<{ tagType: 'protection' | 'face' }>`
       ? theme.colors.tag.protection.text 
       : theme.colors.tag.face.text};
 `;
-
+*/
 const ProductFooter = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  ${media.sm} {
-    flex-direction: column;
-    gap: ${({ theme }) => theme.spacing.lg};
-    align-items: stretch;
-  }
 `;
+
+/*
 
 const ProductPrice = styled.span`
   font-size: ${({ theme }) => theme.fontSize.lg};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
   color: ${({ theme }) => theme.colors.text.primary};
 
-  ${media.md} {
-    font-size: ${({ theme }) => theme.fontSize.base};
-  }
 `;
+
 
 const ProductBuyButton = styled.button`
   background: ${({ theme }) => theme.colors.primaryGradient};
@@ -210,14 +208,5 @@ const ProductBuyButton = styled.button`
     outline: 2px solid ${({ theme }) => theme.colors.primary};
     outline-offset: 2px;
   }
-
-  ${media.md} {
-    padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
-    font-size: ${({ theme }) => theme.fontSize.xs};
-  }
-
-  ${media.sm} {
-    width: 100%;
-    text-align: center;
-  }
-`;*/
+  `;
+*/
