@@ -3,7 +3,7 @@ import './ProductCard.css';
 
 import { IProduct } from '../../services';
 import styled from 'styled-components';
-import { media } from '../../styles/theme';
+//import { media } from '../../styles/theme';
 
 /*
 export interface IProduct {
@@ -143,6 +143,8 @@ const ProductTags =styled.div`
   margin-bottom: 16px;
   flex-wrap: wrap;
 `;
+
+/*
 const ProductTag = styled.span<{ tagType: 'protection' | 'face' }>`
   padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.lg};
   border-radius: ${({ theme }) => theme.borderRadius.xl};
@@ -218,4 +220,4 @@ const ProductBuyButton = styled.button`
     width: 100%;
     text-align: center;
   }
-`;
+`;*/

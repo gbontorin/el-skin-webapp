@@ -2,19 +2,20 @@ import React, { useState } from 'react';
 //import './Header.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartShopping, faSearch } from '@fortawesome/free-solid-svg-icons'; // Ou outra variação se precisar
+import { faCartShopping, faSearch, faTimes } from '@fortawesome/free-solid-svg-icons'; // Ou outra variação se precisar
 import styled from 'styled-components';
 
 import { useCartContext } from '../../context/CartContext';
+import { useSearchContext } from '../../context/SearchContext';
 import CartModal from '../CartModal/CartModal';
 
 function Header() {
   const [isCartModalOpen, setIsCartModalOpen] = useState(false);
   
   const { items, updateQuantity, removeItem, getTotalItems } = useCartContext();
-  //const { searchTerm, setSearchTerm } = useSearchContext();
+  const { searchTerm, setSearchTerm } = useSearchContext();
 
-  /*
+  
   function handleOnChangeBuscador(e: React.ChangeEvent<HTMLInputElement>) {
     const valor = e.target.value;
     setSearchTerm(valor);
@@ -24,7 +25,7 @@ function Header() {
   const handleClearSearch = () => {
     setSearchTerm('');
   };
-*/
+
   function handleOnClickCart() {
     setIsCartModalOpen(true);
   }
@@ -49,18 +50,25 @@ function Header() {
           </Logo>
 
           <SearchBar>
-            <SearchInput
-              type="text"
+            <SearchInput 
+              type="text" 
               placeholder="O que você está procurando?"
-              className="search-input">
-              {/* </SearchBar>onChange={handleOnChange}> */}
-            </SearchInput>
-          
-
-            <SearchButton>
-              {/*/onClick={onClickSearch}> */}
+              value={searchTerm}
+              onChange={handleOnChangeBuscador}
+            />
+            <SearchButton type="button">
               <FontAwesomeIcon icon={faSearch} />
             </SearchButton>
+            {searchTerm && (
+              <ClearSearchButton 
+                data-testid="clear-search-button"
+                onClick={handleClearSearch}
+                type="button"
+                title="Limpar pesquisa"
+              >
+                <FontAwesomeIcon icon={faTimes} />
+              </ClearSearchButton>
+            )}
           </SearchBar>
 
           <HeaderActions>
@@ -227,5 +235,29 @@ const HeaderNav=styled.nav`
   list-style-type: none;
   align-items: center; /* Centraliza verticalmente */
 `;
+
+const ClearSearchButton = styled.button`
+  position: absolute;
+  right: 45px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: ${({ theme }) => theme.spacing.sm};
+  border-radius: ${({ theme }) => theme.borderRadius.round};
+  color: ${({ theme }) => theme.colors.text.tertiary};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all ${({ theme }) => theme.transitions.normal};
+  z-index: 1;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.button.hover};
+    color: ${({ theme }) => theme.colors.text.secondary};
+  }
+`;
+
 
 export default Header;
