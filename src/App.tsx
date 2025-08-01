@@ -2,15 +2,19 @@
 import './App.css';
 import AppRouter from './routes';
 import { CartProvider } from './context/CartContext';
+import { ThemeProvider } from 'styled-components';
+import { theme } from './styles/theme';
 
 //import Theme from './components/Theme/Theme';
 //import styled from 'styled-components';
 
 function App() {
   return (
-    <CartProvider>
-      <AppRouter />
-    </CartProvider>
+    <ThemeProvider theme={theme}>
+      <CartProvider>
+        <AppRouter />
+      </CartProvider>
+    </ThemeProvider>
   );
 }
 
