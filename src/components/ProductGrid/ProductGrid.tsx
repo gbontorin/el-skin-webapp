@@ -18,7 +18,7 @@ function ProductGrid() {
 
   // Filtrar produtos baseado no termo de busca
   const filteredProducts = useMemo(() => {
-    if (!term.trim()) {
+    if (!term) {
       return products;
     }
     

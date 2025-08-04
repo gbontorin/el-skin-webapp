@@ -1,5 +1,5 @@
-import api from './api';
 import { API_CONFIG } from '../config/api';
+import api from './api';
 
 export interface IProduct {
   id: string;
@@ -7,7 +7,7 @@ export interface IProduct {
   description: string;
   price: number;
   image: string;
-  tags: Array<{
+  tags?: Array<{
     label: string;
     type: 'protection' | 'face';
   }>;
@@ -15,21 +15,12 @@ export interface IProduct {
 
 export const productService = {
   async getProducts(): Promise<IProduct[]> {
-    try {
-      const response = await api.get<IProduct[]>(API_CONFIG.ENDPOINTS.PRODUCTS);
-      return response.data;
-    } catch (error) {
-      console.error('Erro ao buscar produtos:', error);
-      throw error;
-    }
+    const response = await api.get<IProduct[]>(API_CONFIG.ENDPOINTS.PRODUCTS);
+    return response.data;
   },
+
   async getProductById(id: string): Promise<IProduct> {
-    try {
-      const response = await api.get<IProduct>(`${API_CONFIG.ENDPOINTS.PRODUCTS}/${id}`);
-      return response.data;
-    } catch (error) {
-      console.error(`Erro ao buscar produto ${id}:`, error);
-      throw error;
-    }
+    const response = await api.get<IProduct>(`${API_CONFIG.ENDPOINTS.PRODUCTS}/${id}`);
+    return response.data;
   },
 };

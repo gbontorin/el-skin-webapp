@@ -47,6 +47,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         <ProductDescription>{product.description}</ProductDescription>
 
         <ProductTags>
+          {/*
           {product.tags.map((tag) => (
             <span
               key={`${product.id}-${tag.label}-${tag.type}`}
@@ -55,6 +56,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
               {tag.label}
             </span>
           ))}
+            */}
         </ProductTags>
 
         <ProductFooter>

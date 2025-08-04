@@ -1,7 +1,7 @@
-import { API_CONFIG } from '../config/APIConfig';
+import { API_CONFIG } from '../config/api';
 import api from './api';
 import { IProduct, productService } from './productService';
- 
+
 const mockProducts: IProduct[] = [
   {
     id: '1',
@@ -25,22 +25,33 @@ const mockProducts: IProduct[] = [
     ]
   }
 ];
- 
+
 jest.mock('./api', () => ({
   get: jest.fn(),
 }));
- 
+
 const mockApi = api as jest.Mocked<typeof api>;
- 
+
 it('getProducts', async () => {
   // arrange
   mockApi.get.mockResolvedValue({ data: mockProducts });
- 
+
   // act
   const result = await productService.getProducts();
- 
+
   // assert
   expect(mockApi.get).toHaveBeenCalledWith(API_CONFIG.ENDPOINTS.PRODUCTS);
   expect(result).toEqual(mockProducts);
 });
- 
+
+it('getProductById', async () => {
+  // arrange
+  mockApi.get.mockResolvedValue({ data: mockProducts[1] });
+
+  // act
+  const result = await productService.getProductById('2');
+
+  // assert
+  expect(mockApi.get).toHaveBeenCalledWith(`${API_CONFIG.ENDPOINTS.PRODUCTS}/2`);
+  expect(result).toEqual(mockProducts[1]);
+});
