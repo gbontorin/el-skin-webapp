@@ -6,24 +6,25 @@ import { faCartShopping, faSearch, faTimes } from '@fortawesome/free-solid-svg-i
 import styled from 'styled-components';
 
 import { useCartContext } from '../../context/CartContext';
-import { useSearchContext } from '../../context/SearchContext';
+//import { useSearchContext } from '../../context/SearchContext';
 import CartModal from '../CartModal/CartModal';
+import { useSearch } from '../../hooks/useSearch';
 
 function Header() {
   const [isCartModalOpen, setIsCartModalOpen] = useState(false);
   
   const { items, updateQuantity, removeItem, getTotalItems } = useCartContext();
-  const { searchTerm, setSearchTerm } = useSearchContext();
-
+  //const { searchTerm, setSearchTerm } = useSearchContext();
+  const {term, setTerm} = useSearch();
   
   function handleOnChangeBuscador(e: React.ChangeEvent<HTMLInputElement>) {
     const valor = e.target.value;
-    setSearchTerm(valor);
+    setTerm(valor);
     console.log('Valor buscado:', valor);
   }
 
   const handleClearSearch = () => {
-    setSearchTerm('');
+    setTerm('');
   };
 
   function handleOnClickCart() {
@@ -53,13 +54,13 @@ function Header() {
             <SearchInput 
               type="text" 
               placeholder="O que você está procurando?"
-              value={searchTerm}
+              value={term}
               onChange={handleOnChangeBuscador}
             />
             <SearchButton type="button">
               <FontAwesomeIcon icon={faSearch} />
             </SearchButton>
-            {searchTerm && (
+            {term && (
               <ClearSearchButton 
                 data-testid="clear-search-button"
                 onClick={handleClearSearch}

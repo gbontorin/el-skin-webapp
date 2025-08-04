@@ -5,21 +5,24 @@ import { CartProvider } from './context/CartContext';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './styles/theme';
 import { GlobalStyles } from './styles/GlobalStyles';
-import { SearchProvider } from './context/SearchContext';
+//import { SearchProvider } from './context/SearchContext';
+import { Provider } from 'react-redux';
+import { store } from './store';
 
 //import Theme from './components/Theme/Theme';
 //import styled from 'styled-components';
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <SearchProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+      
         <CartProvider>
           <AppRouter />
         </CartProvider>
-      </SearchProvider>
-    </ThemeProvider>
+      </ThemeProvider>
+    </Provider>
   );
 }
 

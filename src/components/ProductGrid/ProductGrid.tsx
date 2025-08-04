@@ -3,8 +3,9 @@ import styled, { keyframes } from 'styled-components';
 import ProductCard from '../ProductCard/ProductCard';
 import { productService, IProduct } from '../../services';
 import { useCartContext } from '../../context/CartContext';
-import { useSearchContext } from '../../context/SearchContext';
+//import { useSearchContext } from '../../context/SearchContext';
 import { media } from '../../styles/theme';
+import { useSearch } from '../../hooks/useSearch';
 
 function ProductGrid() {
   const title = 'nossos queridinhos estão aqui';
@@ -12,19 +13,20 @@ function ProductGrid() {
 
   const [products, setProducts] = React.useState<IProduct[]>([]);
   const { addItem } = useCartContext();
-  const { searchTerm } = useSearchContext();
+  const {term, setTerm} = useSearch();
+  //const { searchTerm } = useSearchContext();
 
   // Filtrar produtos baseado no termo de busca
   const filteredProducts = useMemo(() => {
-    if (!searchTerm.trim()) {
+    if (!term.trim()) {
       return products;
     }
     
     return products.filter(product => 
-      product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      product.description.toLowerCase().includes(searchTerm.toLowerCase())
+      product.name.toLowerCase().includes(term.toLowerCase()) ||
+      product.description.toLowerCase().includes(term.toLowerCase())
     );
-  }, [products, searchTerm]);  
+  }, [products, term]);  
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -64,9 +66,9 @@ function ProductGrid() {
       <ProductGridContainer>
         <ProductGridTitle>{title}</ProductGridTitle>
         
-        {searchTerm && (
+        {term && (
           <SearchInfo>
-            <p>Resultados para: &ldquo;<strong>{searchTerm}</strong>&rdquo; ({filteredProducts.length} produto{filteredProducts.length !== 1 ? 's' : ''} encontrado{filteredProducts.length !== 1 ? 's' : ''})</p>
+            <p>Resultados para: &ldquo;<strong>{term}</strong>&rdquo; ({filteredProducts.length} produto{filteredProducts.length !== 1 ? 's' : ''} encontrado{filteredProducts.length !== 1 ? 's' : ''})</p>
           </SearchInfo>
         )}
         
@@ -82,8 +84,8 @@ function ProductGrid() {
             ))
           ) : (
             <NoProductsFound>
-              {searchTerm ? (
-                <p>Nenhum produto encontrado para &ldquo;{searchTerm}&rdquo;. Tente buscar por outro termo.</p>
+              {term ? (
+                <p>Nenhum produto encontrado para &ldquo;{term}&rdquo;. Tente buscar por outro termo.</p>
               ) : (
                 <p>Nenhum produto disponível no momento.</p>
               )}
