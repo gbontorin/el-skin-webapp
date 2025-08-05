@@ -67,5 +67,13 @@
     "globals": "^16.3.0",
     "jest": "^27.5.1",
     "typescript-eslint": "^8.36.0"
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!(axios)/)"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less|scss|sass)$": "identity-obj-proxy"
+    }
   }
 }
