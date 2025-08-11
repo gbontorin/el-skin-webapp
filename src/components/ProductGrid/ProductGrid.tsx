@@ -13,20 +13,21 @@ function ProductGrid() {
 
   const [products, setProducts] = React.useState<IProduct[]>([]);
   const { addItem } = useCartContext();
-  const {term} = useSearch();
+  //const {term} = useSearch();
+  const {search} = useSearch();
   //const { searchTerm } = useSearchContext();
 
   // Filtrar produtos baseado no termo de busca
   const filteredProducts = useMemo(() => {
-    if (!term) {
+    if (!search) {
       return products;
     }
     
     return products.filter(product => 
-      product.name.toLowerCase().includes(term.toLowerCase()) ||
-      product.description.toLowerCase().includes(term.toLowerCase())
+      product.name.toLowerCase().includes(search.toLowerCase()) ||
+      product.description.toLowerCase().includes(search.toLowerCase())
     );
-  }, [products, term]);  
+  }, [products, search]);  
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -66,9 +67,9 @@ function ProductGrid() {
       <ProductGridContainer>
         <ProductGridTitle>{title}</ProductGridTitle>
         
-        {term && (
+        {search && (
           <SearchInfo>
-            <p>Resultados para: &ldquo;<strong>{term}</strong>&rdquo; ({filteredProducts.length} produto{filteredProducts.length !== 1 ? 's' : ''} encontrado{filteredProducts.length !== 1 ? 's' : ''})</p>
+            <p>Resultados para: &ldquo;<strong>{search}</strong>&rdquo; ({filteredProducts.length} produto{filteredProducts.length !== 1 ? 's' : ''} encontrado{filteredProducts.length !== 1 ? 's' : ''})</p>
           </SearchInfo>
         )}
         
@@ -84,8 +85,8 @@ function ProductGrid() {
             ))
           ) : (
             <NoProductsFound>
-              {term ? (
-                <p>Nenhum produto encontrado para &ldquo;{term}&rdquo;. Tente buscar por outro termo.</p>
+              {search ? (
+                <p>Nenhum produto encontrado para &ldquo;{search}&rdquo;. Tente buscar por outro termo.</p>
               ) : (
                 <p>Nenhum produto disponível no momento.</p>
               )}

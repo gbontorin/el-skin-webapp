@@ -15,16 +15,19 @@ function Header() {
   
   const { items, updateQuantity, removeItem, getTotalItems } = useCartContext();
   //const { searchTerm, setSearchTerm } = useSearchContext();
-  const {term, setTerm} = useSearch();
+  //const {term, setTerm} = useSearch();
+  const { search, setSearch } = useSearch();
   
   function handleOnChangeBuscador(e: React.ChangeEvent<HTMLInputElement>) {
     const valor = e.target.value;
-    setTerm(valor);
+    //setTerm(valor);
+    setSearch(valor);
     console.log('Valor buscado:', valor);
   }
 
   const handleClearSearch = () => {
-    setTerm('');
+    //setTerm('');
+    setSearch('');
   };
 
   function handleOnClickCart() {
@@ -54,13 +57,13 @@ function Header() {
             <SearchInput 
               type="text" 
               placeholder="O que você está procurando?"
-              value={term}
+              value={search}
               onChange={handleOnChangeBuscador}
             />
             <SearchButton type="button">
               <FontAwesomeIcon icon={faSearch} />
             </SearchButton>
-            {term && (
+            {search && (
               <ClearSearchButton 
                 data-testid="clear-search-button"
                 onClick={handleClearSearch}

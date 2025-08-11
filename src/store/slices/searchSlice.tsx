@@ -1,22 +1,25 @@
-import { createSlice } from '@reduxjs/toolkit';
- 
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 interface SearchState {
-  term: string;
+  search: string;
 }
- 
+
 const initialState: SearchState = {
-  term: '',
+  search: '',
 };
- 
+
 const searchSlice = createSlice({
   name: 'search',
   initialState,
   reducers: {
-    setTerm: (state, action) => {
-      state.term = action.payload;
-    }
-  }
+    setSearch: (state, action: PayloadAction<string>) => {
+      state.search = action.payload;
+    },
+    clearSearch: (state) => {
+      state.search = '';
+    },
+  },
 });
 
+export const { setSearch, clearSearch } = searchSlice.actions;
 export default searchSlice.reducer;
-export const { setTerm } = searchSlice.actions;

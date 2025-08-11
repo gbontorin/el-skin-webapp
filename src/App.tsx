@@ -17,7 +17,6 @@ function App() {
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
-      
         <CartProvider>
           <AppRouter />
         </CartProvider>
