@@ -1,8 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-interface SeachState {
-    search:string;
-}
 
 const initialState = {
   search: '',
@@ -25,3 +22,8 @@ const searchSlice = createSlice({
 });
 
 export default searchSlice.reducer;
+/*
+interface SeachState {
+    search:string;
+}
+*/

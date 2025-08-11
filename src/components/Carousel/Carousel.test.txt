@@ -17,7 +17,7 @@ const mockCarouselItems = [
   { id: '3', title: 'Título 3', subtitle: 'Subtítulo 3', description: 'Descrição 3', backgroundImage: 'bg3.png' },
 ];
 
-describe('Carousel', () => {
+describe('Carousel', async () => {
   /*
     beforeEach(() => {
     // Limpa os mocks antes de cada teste para evitar interferência
@@ -31,7 +31,7 @@ describe('Carousel', () => {
     render(<Carousel />);
     
     // Verifique se o carrossel não está no documento.
-    //const carouselSection = await screen.queryByRole('region');
+    const carouselSection = await screen.queryByRole('region');
     expect(true).toBeTruthy;
     //expect(carouselSection).not.toBeInTheDocument();
   });

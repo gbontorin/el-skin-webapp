@@ -1,5 +1,4 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import CartModal from './CartModal';
 
 describe('CartModal', () => {
@@ -93,58 +92,4 @@ describe('CartModal', () => {
     // Total = (10.50 * 2) + (15.00 * 1) = 21.00 + 15.00 = 36.00
     expect(screen.getByText('R$ 36,00')).toBeInTheDocument();
   });
-
-  
-  /*
- 
-
-  // --- Testes de Interação do Usuário ---
-
-  it('deve chamar `onClose` ao clicar no botão de fechar', () => {
-    renderCartModal();
-    const closeButton = screen.getByRole('button', { name: /fechar/i }); // Botão com ícone de `faTimes`
-    fireEvent.click(closeButton);
-    expect(mockOnClose).toHaveBeenCalledTimes(1);
-  });
-
-  it('deve chamar `onClose` ao clicar no backdrop (fora do modal)', () => {
-    renderCartModal();
-    const overlay = screen.getByRole('dialog'); // Elemento com role="dialog"
-    fireEvent.click(overlay);
-    expect(mockOnClose).toHaveBeenCalledTimes(1);
-  });
-
-  it('deve chamar `onUpdateQuantity` ao clicar no botão de aumentar a quantidade', () => {
-    renderCartModal({ items: mockItems });
-    // Encontra o botão de aumentar quantidade para o primeiro item
-    const increaseButton = screen.getAllByRole('button', { name: /plus/i })[0];
-    fireEvent.click(increaseButton);
-    // Verifica se `onUpdateQuantity` foi chamado com o ID correto e a nova quantidade
-    expect(mockOnUpdateQuantity).toHaveBeenCalledWith('1', 3);
-  });
-
-  it('deve chamar `onUpdateQuantity` ao clicar no botão de diminuir a quantidade', () => {
-    renderCartModal({ items: mockItems });
-    // Encontra o botão de diminuir quantidade para o primeiro item
-    const decreaseButton = screen.getAllByRole('button', { name: /minus/i })[0];
-    fireEvent.click(decreaseButton);
-    // Verifica se `onUpdateQuantity` foi chamado com o ID correto e a nova quantidade
-    expect(mockOnUpdateQuantity).toHaveBeenCalledWith('1', 1);
-  });
-
-  it('deve chamar `onRemoveItem` ao clicar no botão de remover', () => {
-    renderCartModal({ items: mockItems });
-    const removeButton = screen.getAllByRole('button', { name: /remover item/i })[0];
-    fireEvent.click(removeButton);
-    expect(mockOnRemoveItem).toHaveBeenCalledWith('1');
-  });
-  
-  it('deve chamar `onFinalizePurchase` ao clicar no botão "Finalizar compra"', () => {
-    renderCartModal({ items: mockItems });
-    const finalizeButton = screen.getByRole('button', { name: /finalizar compra/i });
-    fireEvent.click(finalizeButton);
-    expect(mockOnFinalizePurchase).toHaveBeenCalledTimes(1);
-  });
-*/
-
 });

@@ -13,7 +13,7 @@ function ProductGrid() {
 
   const [products, setProducts] = React.useState<IProduct[]>([]);
   const { addItem } = useCartContext();
-  const {term, setTerm} = useSearch();
+  const {term} = useSearch();
   //const { searchTerm } = useSearchContext();
 
   // Filtrar produtos baseado no termo de busca

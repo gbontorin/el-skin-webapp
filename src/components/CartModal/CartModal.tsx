@@ -88,6 +88,7 @@ const CartModal: React.FC<CartModalProps> = ({
                         <div className="quantity-controls">
                           <button 
                             className="quantity-btn"
+                            data-testid="minus-button"
                             onClick={() => onUpdateQuantity(item.id, Math.max(1, item.quantity - 1))}
                           >
                             <FontAwesomeIcon icon={faMinus} />

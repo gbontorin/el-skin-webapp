@@ -15,8 +15,6 @@ jest.mock('../../services', () => ({
   },
 }));
 
-// Mock do SearchContext para controlar o termo de busca
-const mockSetSearchTerm = jest.fn();
 let mockSearchTerm = '';
 
 jest.mock('../../hooks/useSearch', () => ({
@@ -121,65 +119,29 @@ describe('ProductGrid', () => {
     consoleSpy.mockRestore();
   });
 
-  /*
-  it('Deve chamar addItem ao clicar no botão comprar', async () => {
-    await renderWithProviders();
-    const buyButtons = screen.getAllByTestId('buy-button');
-    buyButtons[0].click();
-    expect(mockAddItem).toHaveBeenCalledTimes(1);
-  });
-
-  it('Deve filtrar produtos com base no termo de busca', async () => {
-    mockSearchTerm = 'Produto 1';
-    await renderWithProviders();
-
-    expect(screen.getByText('Produto 1')).toBeInTheDocument();
-    expect(screen.queryByText('Produto 2')).not.toBeInTheDocument();
-  });
-  */
-});
-/*
-  it('Pesquisa vazia', async () => {
-    mockSearchTerm = 'produto inexistente';
+  it('Deve avisar estar vazio', async () => {
+    mockProductService.getProducts.mockResolvedValue([]);
     
     await renderWithProviders();
     
     await waitFor(() => {
-      expect(screen.getByText('Nenhum produto encontrado')).toBeInTheDocument();
+      expect(screen.getByText('Nenhum produto disponível no momento.')).toBeInTheDocument();
     });
   });
 
-  /*
-  it('Pesquisa com sucesso', async () => {
-    mockSearchTerm = 'Produto 1';
-    
+  it('Adicionar produto quando for clicado', async () => {
     await renderWithProviders();
     
-    await waitFor(() => {
-      //expect(screen.getByText('Resultados')).toBeInTheDocument();
-      expect(screen.getByRole('heading', { name: 'Produto 1' })).toBeInTheDocument();
-      expect(screen.queryByRole('heading', { name: 'Produto 2' })).not.toBeInTheDocument();
-    });
-  });
-  
-  */
-
-/*
-
-describe('ProductGrid', () => {
-  
-  it('should handle loading state', async () => {
-    mockProductService.getProducts.mockResolvedValue(mockProducts);
-    
-    await renderWithProviders();
-    
-    // Aguarda o carregamento completar
     await waitFor(() => {
       expect(screen.getByText('Produto 1')).toBeInTheDocument();
     });
+    
+    const buyButtons = screen.getAllByRole('button', { name: /comprar/i });
+    fireEvent.click(buyButtons[0]);
+    
+    // O produto deve ser adicionado ao carrinho via contexto
   });
-
-  it('should handle error state gracefully', async () => {
+  it('Erro gracioso', async () => {
     const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => undefined);
     mockProductService.getProducts.mockRejectedValue(new Error('API Error'));
     
@@ -192,45 +154,10 @@ describe('ProductGrid', () => {
     consoleSpy.mockRestore();
   });
 
-  it('should call console.log when product is clicked', async () => {
-    const consoleSpy = jest.spyOn(console, 'log').mockImplementation(() => undefined);
-    
+  it('Deve filtrar produtos com base no termo de busca', async () => {
+    mockSearchTerm = 'PRODUTO 1';
     await renderWithProviders();
-    
-    await waitFor(() => {
-      expect(screen.getByText('Produto 1')).toBeInTheDocument();
-    });
-    
-    const productCards = screen.getAllByTestId('product-card');
-    fireEvent.click(productCards[0]); // Click no primeiro produto
-    
-    expect(consoleSpy).toHaveBeenCalledWith('Produto clicado: 1');
-    consoleSpy.mockRestore();
-  });
 
-  it('should add product to cart when buy button is clicked', async () => {
-    await renderWithProviders();
-    
-    await waitFor(() => {
-      expect(screen.getByText('Produto 1')).toBeInTheDocument();
-    });
-    
-    const buyButtons = screen.getAllByRole('button', { name: /comprar/i });
-    fireEvent.click(buyButtons[0]);
-    
-    // O produto deve ser adicionado ao carrinho via contexto
+    expect(screen.getByText('Produto 1')).toBeInTheDocument();
   });
-
-  it('should show empty state message when no products available', async () => {
-    mockProductService.getProducts.mockResolvedValue([]);
-    
-    await renderWithProviders();
-    
-    await waitFor(() => {
-      expect(screen.getByText('Nenhum produto disponível no momento.')).toBeInTheDocument();
-    });
-  });
-
-  
 });
-*/
