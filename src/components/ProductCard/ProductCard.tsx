@@ -1,23 +1,9 @@
 import React from 'react';
-import './ProductCard.css';
+//import './ProductCard.css';
 
 import { IProduct } from '../../services';
 import styled from 'styled-components';
-//import { media } from '../../styles/theme';
 
-/*
-export interface IProduct {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  image: string;
-  tags: Array<{
-    label: string;
-    type: 'protection' | 'face';
-  }>;
-}
-*/
 interface ProductCardProps {
   product: IProduct;
   onProductClick: (productId: string) => void;
@@ -60,17 +46,17 @@ const ProductCard: React.FC<ProductCardProps> = ({
         </ProductTags>
 
         <ProductFooter>
-          <span className="product-price">
+          <ProductPrice className="product-price">
             {formatPrice(product.price)}
-          </span>
-          <button 
+          </ProductPrice>
+          <ProductBuyButton 
             data-testid="product-buy-button"
             className="product-buy-button"
             onClick={(e) => onBuyClick(product.id, e)}
             type="button"
           >
             comprar
-          </button>
+          </ProductBuyButton>
         </ProductFooter>
       </ProductInfo>
     </ProductCardStyled>
@@ -150,31 +136,11 @@ const ProductTags =styled.div`
   flex-wrap: wrap;
 `;
 
-/*
-const ProductTag = styled.span<{ tagType: 'protection' | 'face' }>`
-  padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.lg};
-  border-radius: ${({ theme }) => theme.borderRadius.xl};
-  font-size: ${({ theme }) => theme.fontSize.xs};
-  font-weight: ${({ theme }) => theme.fontWeight.semibold};
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  background-color: ${({ theme, tagType }) => 
-    tagType === 'protection' 
-      ? theme.colors.tag.protection.bg 
-      : theme.colors.tag.face.bg};
-  color: ${({ theme, tagType }) => 
-    tagType === 'protection' 
-      ? theme.colors.tag.protection.text 
-      : theme.colors.tag.face.text};
-`;
-*/
 const ProductFooter = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
-
-/*
 
 const ProductPrice = styled.span`
   font-size: ${({ theme }) => theme.fontSize.lg};
@@ -182,7 +148,6 @@ const ProductPrice = styled.span`
   color: ${({ theme }) => theme.colors.text.primary};
 
 `;
-
 
 const ProductBuyButton = styled.button`
   background: ${({ theme }) => theme.colors.primaryGradient};
@@ -211,4 +176,3 @@ const ProductBuyButton = styled.button`
     outline-offset: 2px;
   }
   `;
-*/
