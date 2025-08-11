@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import '@testing-library/jest-dom';
 
 // Crie um mock da função reportWebVitals
