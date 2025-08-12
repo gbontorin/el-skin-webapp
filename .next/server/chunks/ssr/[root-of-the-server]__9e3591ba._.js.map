@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 6, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"","debugId":null}},
+    {"offset": {"line": 18, "column": 0}, "map": {"version":3,"sources":["file:///C:/Projetos_Alura/el-skin-webapp/src/app/produtos/page.tsx"],"sourcesContent":["export default function Home() {\r\n  return <h1>minha lista de produtos!</h1>\r\n}"],"names":[],"mappings":";;;;;AAAe,SAAS;IACtB,qBAAO,8OAAC;kBAAG;;;;;;AACb","debugId":null}}]
+}
