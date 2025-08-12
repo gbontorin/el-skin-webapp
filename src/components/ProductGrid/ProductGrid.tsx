@@ -1,22 +1,28 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import styled, { keyframes } from 'styled-components';
 import ProductCard from '../ProductCard/ProductCard';
-import { productService, IProduct } from '../../services';
+//import { productService, IProduct } from '../../services';
 import { useCartContext } from '../../context/CartContext';
 //import { useSearchContext } from '../../context/SearchContext';
 import { media } from '../../styles/theme';
 import { useSearch } from '../../hooks/useSearch';
+import { useGetProductsQuery } from '../../store/api/apiSlice';
 
 function ProductGrid() {
   const title = 'nossos queridinhos estão aqui';
   // const products = defaultProducts;
 
-  const [products, setProducts] = React.useState<IProduct[]>([]);
+  //const [products, setProducts] = React.useState<IProduct[]>([]);
+
+  const { data: products = [], isLoading: loading, error } = useGetProductsQuery();
+
   const { addItem } = useCartContext();
-  //const {term} = useSearch();
+  
   const {search} = useSearch();
   //const { searchTerm } = useSearchContext();
-
+  //const {term} = useSearch();
+  
+  
   // Filtrar produtos baseado no termo de busca
   const filteredProducts = useMemo(() => {
     if (!search) {
@@ -29,6 +35,9 @@ function ProductGrid() {
     );
   }, [products, search]);  
 
+
+
+  /*
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -42,7 +51,7 @@ function ProductGrid() {
 
     fetchProducts();
   }, []);
-
+*/
   const handleProductClick = (productId: string) => {
     console.log(`Produto clicado: ${productId}`);
   };
@@ -61,6 +70,33 @@ function ProductGrid() {
       console.log(`Produto adicionado ao carrinho: ${productId}`);
     }
   };
+
+  if (loading) {
+    return (
+      <ProductGridSection>
+        <ProductGridContainer>
+          <ProductGridTitle>{title}</ProductGridTitle>
+          <StyledProductGrid>
+            <p>Carregando produtos...</p>
+          </StyledProductGrid>
+        </ProductGridContainer>
+      </ProductGridSection>
+    );
+  }
+
+  if (error) {
+    return (
+      <ProductGridSection>
+        <ProductGridContainer>
+          <ProductGridTitle>{title}</ProductGridTitle>
+          <StyledProductGrid>
+            <p>Erro ao carregar produtos: {JSON.stringify(error)}</p>
+          </StyledProductGrid>
+        </ProductGridContainer>
+      </ProductGridSection>
+    );
+  }
+
 
   return (
     <ProductGridSection>

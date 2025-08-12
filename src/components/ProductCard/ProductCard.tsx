@@ -3,7 +3,7 @@ import React from 'react';
 
 //import { IProduct } from '../../services';
 
-import { IProduct } from '../../store/slices/productsSlice';
+import { IProduct } from '../../store/api/apiSlice';
 import styled from 'styled-components';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../../styles/theme';

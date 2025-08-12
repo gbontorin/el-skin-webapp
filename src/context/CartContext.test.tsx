@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { CartProvider, useCartContext } from './CartContext';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 
 const TestComponent: React.FC = () => {
@@ -52,6 +52,7 @@ const renderWithCartProvider = () => {
 describe('Testando Contexto do Carrinho', () => {
   
   it('Dando contexto para filhos, dados zerados.', () => {
+    renderWithCartProvider(); 
     expect(true).toBeTruthy;
 
   });

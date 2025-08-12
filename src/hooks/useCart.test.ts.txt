@@ -1,5 +1,5 @@
-import { renderHook, act } from '@testing-library/react';
-import { useCart } from './useCart';
+//import { renderHook, act } from '@testing-library/react';
+//import { useCart } from './useCart';
 
 describe('useCart', () => {
 

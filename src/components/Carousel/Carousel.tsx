@@ -7,7 +7,8 @@ import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import styles from './Carousel.module.css';
 import { useEffect, useState } from 'react';
 
-import { carouselService, ICarouselItem } from '../../services';
+//import { carouselService, ICarouselItem } from '../../services';
+import { useGetCarouselItemsQuery } from '../../store/api/apiSlice';
 
 
 /* Old Carousel com itens fixos
@@ -43,7 +44,9 @@ function Carousel() {
 
 function Carousel() {
 
-  const [carouselItems, setCarouselItems] = useState<ICarouselItem[]>([]);
+  const { data: carouselItems = [], isLoading, error } = useGetCarouselItemsQuery();
+
+  //const [carouselItems, setCarouselItems] = useState<ICarouselItem[]>([]);
 
   const [idxItemAtual, setIdxItemAtual] = useState(0);
   
@@ -61,6 +64,8 @@ function Carousel() {
     return () => clearInterval(timer);
   }, [carouselItems.length, isAutoPlaying]);
 
+  /*
+
   useEffect(() => {
     const fetchCarouselItems = async () => {
       try {
@@ -74,6 +79,8 @@ function Carousel() {
 
     fetchCarouselItems();
   }, []);
+
+  */
 
   function previousItem() {
     setIdxItemAtual(idxItemAtual => (idxItemAtual === 0 ? carouselItems.length - 1 : idxItemAtual - 1));
@@ -95,6 +102,19 @@ function Carousel() {
     console.log('Botão clicado: Comprar Agora!');
   };
 
+  if (isLoading) {
+    return <h6>Carregando...</h6>;
+  }
+
+  if (error) {
+    return <h6>Erro ao carregar carousel</h6>;
+  }
+
+  if (carouselItems.length === 0) {
+    return <h6>Nenhum item encontrado</h6>;
+  }
+
+ 
   return (
     <>
       {carouselItems.length > 0 && <section 
