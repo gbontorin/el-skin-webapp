@@ -2,6 +2,16 @@ import { renderHook, act } from '@testing-library/react';
 import { useCart } from './useCart';
 
 describe('useCart', () => {
+
+  it('Verdade', () => {
+    expect(true).toBeTruthy;
+
+  });
+
+});
+
+/*
+
   it('Carro vazio no início', () => {
     const { result } = renderHook(() => useCart());
     

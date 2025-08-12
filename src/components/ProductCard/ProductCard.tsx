@@ -5,6 +5,8 @@ import React from 'react';
 
 import { IProduct } from '../../store/slices/productsSlice';
 import styled from 'styled-components';
+import { ThemeProvider } from 'styled-components';
+import { theme } from '../../styles/theme';
 
 interface ProductCardProps {
   product: IProduct;
@@ -22,20 +24,21 @@ const ProductCard: React.FC<ProductCardProps> = ({
   };
 
   return (
-    <ProductCardStyled
-      data-testid="product-card"
-      onClick={() => onProductClick(product.id)}>
+    <ThemeProvider theme={theme}>
+      <ProductCardStyled
+        data-testid="product-card"
+        onClick={() => onProductClick(product.id)}
+      >
+        <ProductImage>
+          <img src={product.image} alt={product.name} />
+        </ProductImage>
 
-      <ProductImage>
-        <img src={product.image} alt={product.name} />
-      </ProductImage>
+        <ProductInfo>
+          <ProductName>{product.name}</ProductName>
+          <ProductDescription>{product.description}</ProductDescription>
 
-      <ProductInfo>
-        <ProductName>{product.name}</ProductName>
-        <ProductDescription>{product.description}</ProductDescription>
-
-        <ProductTags>
-          {/*
+          <ProductTags>
+            {/*
           {product.tags.map((tag) => (
             <span
               key={`${product.id}-${tag.label}-${tag.type}`}
@@ -45,23 +48,24 @@ const ProductCard: React.FC<ProductCardProps> = ({
             </span>
           ))}
             */}
-        </ProductTags>
+          </ProductTags>
 
-        <ProductFooter>
-          <ProductPrice className="product-price">
-            {formatPrice(product.price)}
-          </ProductPrice>
-          <ProductBuyButton 
-            data-testid="product-buy-button"
-            className="product-buy-button"
-            onClick={(e) => onBuyClick(product.id, e)}
-            type="button"
-          >
-            comprar
-          </ProductBuyButton>
-        </ProductFooter>
-      </ProductInfo>
-    </ProductCardStyled>
+          <ProductFooter>
+            <ProductPrice className="product-price">
+              {formatPrice(product.price)}
+            </ProductPrice>
+            <ProductBuyButton
+              data-testid="product-buy-button"
+              className="product-buy-button"
+              onClick={(e) => onBuyClick(product.id, e)}
+              type="button"
+            >
+              comprar
+            </ProductBuyButton>
+          </ProductFooter>
+        </ProductInfo>
+      </ProductCardStyled>
+    </ThemeProvider>
   );
 };
 
@@ -80,20 +84,20 @@ const ProductCardStyled = styled.a`
   padding: 0;
   text-align: left;
   font-family: inherit;
-&:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-}
-&:focus {
-  outline: 2px solid #8B4A8B;
-  outline-offset: 2px;
-}`;
-
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+  &:focus {
+    outline: 2px solid #8b4a8b;
+    outline-offset: 2px;
+  }
+`;
 
 const ProductImage = styled.div`
   width: 100%;
   height: 200px;
-  background-color: #C8B99C;
+  background-color: #c8b99c;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,12 +107,11 @@ const ProductImage = styled.div`
     height: 100%;
     object-fit: cover;
   }
-  `;
+`;
 
 const ProductInfo = styled.div`
   padding: 20px;
 `;
-
 
 const ProductName = styled.h3`
   font-size: 16px;
@@ -130,8 +133,7 @@ const ProductDescription = styled.p`
   overflow: hidden;
 `;
 
-
-const ProductTags =styled.div`
+const ProductTags = styled.div`
   display: flex;
   gap: 8px;
   margin-bottom: 16px;
@@ -148,7 +150,6 @@ const ProductPrice = styled.span`
   font-size: ${({ theme }) => theme.fontSize.lg};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
   color: ${({ theme }) => theme.colors.text.primary};
-
 `;
 
 const ProductBuyButton = styled.button`
@@ -177,4 +178,4 @@ const ProductBuyButton = styled.button`
     outline: 2px solid ${({ theme }) => theme.colors.primary};
     outline-offset: 2px;
   }
-  `;
+`;
