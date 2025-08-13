@@ -1,0 +1,160 @@
+/* [project]/src/components/Carousel/Carousel.module.css [app-client] (css) */
+.Carousel-module__kvvB0q__carouselSection {
+  background-color: #0000;
+  background-image: linear-gradient(135deg, #fffffff2 0%, #ffffffd9 40%, #0000 60%), linear-gradient(45deg, #f8f6f3 0%, #e8e4e0 100%);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: scroll, scroll;
+  background-origin: padding-box, padding-box;
+  background-clip: border-box, border-box;
+  align-items: center;
+  min-height: 500px;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.Carousel-module__kvvB0q__carouselSection:before {
+  content: "";
+  pointer-events: none;
+  background: linear-gradient(135deg, #ffffff1a 0%, #0000 50%);
+  position: absolute;
+  inset: 0;
+}
+
+.Carousel-module__kvvB0q__carouselContainer {
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+}
+
+.Carousel-module__kvvB0q__carouselContent {
+  align-items: left;
+  gap: 0;
+  max-width: 1000px;
+  display: flex;
+}
+
+.Carousel-module__kvvB0q__carouselNavButton {
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  background: #fff3;
+  border: 1px solid #ffffff4d;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  transition: all .3s;
+  display: flex;
+}
+
+.Carousel-module__kvvB0q__carouselNavButton:hover {
+  background: #ffffff4d;
+  transform: translateX(-2px);
+}
+
+.Carousel-module__kvvB0q__carouselText {
+  flex: 1;
+}
+
+.Carousel-module__kvvB0q__carouselSubtitle {
+  color: #8b4a8b;
+  letter-spacing: .5px;
+  text-align: left;
+  margin-bottom: 8px;
+  margin-left: 32px;
+  font-size: 16px;
+  font-weight: 400;
+  display: block;
+}
+
+.Carousel-module__kvvB0q__carouselTitle {
+  text-align: left;
+  color: #8b4a8b;
+  text-shadow: 2px 2px 4px #8b4a8b1a;
+  margin-bottom: 16px;
+  margin-left: 32px;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.Carousel-module__kvvB0q__carouselDescription {
+  text-align: left;
+  color: #666;
+  max-width: 400px;
+  margin-bottom: 32px;
+  margin-left: 32px;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.Carousel-module__kvvB0q__carouselCtaButton {
+  color: #fff;
+  cursor: pointer;
+  text-transform: lowercase;
+  background: linear-gradient(135deg, #8b4a8b 0%, #a855a8 100%);
+  border: none;
+  border-radius: 32px;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all .3s;
+  display: flex;
+  box-shadow: 0 4px 16px #8b4a8b4d;
+}
+
+.Carousel-module__kvvB0q__carouselCtaButton:hover {
+  background: linear-gradient(135deg, #7a3e7a 0%, #9333ea 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px #8b4a8b66;
+}
+
+.Carousel-module__kvvB0q__carouselCtaButton:active {
+  transform: translateY(0);
+}
+
+@keyframes Carousel-module__kvvB0q__fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.Carousel-module__kvvB0q__carouselText > * {
+  animation: .6s ease-out forwards Carousel-module__kvvB0q__fadeInUp;
+}
+
+.Carousel-module__kvvB0q__carouselText .Carousel-module__kvvB0q__carouselSubtitle {
+  animation-delay: .1s;
+}
+
+.Carousel-module__kvvB0q__carouselText .Carousel-module__kvvB0q__carouselTitle {
+  animation-delay: .2s;
+}
+
+.Carousel-module__kvvB0q__carouselText .Carousel-module__kvvB0q__carouselDescription {
+  animation-delay: .3s;
+}
+
+.Carousel-module__kvvB0q__carouselText .Carousel-module__kvvB0q__carouselCtaButton {
+  animation-delay: .4s;
+}
+
+.Carousel-module__kvvB0q__carouselContent .Carousel-module__kvvB0q__carouselBackButton {
+  animation: .6s ease-out 50ms forwards Carousel-module__kvvB0q__fadeInUp;
+}
+
+/*# sourceMappingURL=src_components_Carousel_Carousel_module_fd1e95e6.css.map*/
