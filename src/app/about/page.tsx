@@ -46,8 +46,8 @@ const About: React.FC = () => {
               src={About1}
               alt="Produto AL SKIN sendo aplicado"
               className={styles.product_image}
-              width={200}
-              height={200}
+              width={100}
+              height={100}
             />
           </div>
         </div>

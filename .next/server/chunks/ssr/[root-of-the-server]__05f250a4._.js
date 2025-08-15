@@ -166,8 +166,8 @@ const About = ()=>{
                                 src: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$assets$2f$about1$2e$png$2e$mjs__$7b$__IMAGE__$3d3e$__$225b$project$5d2f$src$2f$assets$2f$about1$2e$png__$28$static__in__ecmascript$2922$__$7d$__$5b$app$2d$rsc$5d$__$28$structured__image__object$2c$__ecmascript$29$__["default"],
                                 alt: "Produto AL SKIN sendo aplicado",
                                 className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$about$2f$styles$2e$module$2e$css__$5b$app$2d$rsc$5d$__$28$css__module$29$__["default"].product_image,
-                                width: 200,
-                                height: 200
+                                width: 100,
+                                height: 100
                             }, void 0, false, {
                                 fileName: "[project]/src/app/about/page.tsx",
                                 lineNumber: 45,
