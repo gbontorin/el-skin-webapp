@@ -506,11 +506,10 @@ _c = CartProvider;
 const useCartContext = ()=>{
     _s1();
     const context = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useContext"])(CartContext);
-    /*
-  if (!context) {
-    throw new Error('useCartContext must be used within a CartProvider');
-  }
-    */ return context;
+    if (!context) {
+        throw new Error('useCartContext must be used within a CartProvider');
+    }
+    return context;
 };
 _s1(useCartContext, "b9L3QQ+jgeyIrH0NfHrJ8nn7VMU=");
 var _c;

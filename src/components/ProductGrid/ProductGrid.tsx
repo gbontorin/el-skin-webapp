@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useMemo } from 'react';
 import styled, { keyframes } from 'styled-components';
 import ProductCard from '../ProductCard/ProductCard';

@@ -1,6 +1,7 @@
 //import Img1 from '../../assets/img1.png';
 //import Img2 from '../../assets/img2.png';
 //import Img3 from '../../assets/img3.png';
+'use client';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';

@@ -36,6 +36,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$store$2f$api$2f$apiSlice$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/store/api/apiSlice.ts [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
+'use client';
 ;
 ;
 ;
@@ -132,7 +133,7 @@ function Carousel() {
             children: "Carregando..."
         }, void 0, false, {
             fileName: "[project]/src/components/Carousel/Carousel.tsx",
-            lineNumber: 106,
+            lineNumber: 107,
             columnNumber: 12
         }, this);
     }
@@ -141,7 +142,7 @@ function Carousel() {
             children: "Erro ao carregar carousel"
         }, void 0, false, {
             fileName: "[project]/src/components/Carousel/Carousel.tsx",
-            lineNumber: 110,
+            lineNumber: 111,
             columnNumber: 12
         }, this);
     }
@@ -150,7 +151,7 @@ function Carousel() {
             children: "Nenhum item encontrado"
         }, void 0, false, {
             fileName: "[project]/src/components/Carousel/Carousel.tsx",
-            lineNumber: 114,
+            lineNumber: 115,
             columnNumber: 12
         }, this);
     }
@@ -180,12 +181,12 @@ function Carousel() {
                                 }
                             }, void 0, false, {
                                 fileName: "[project]/src/components/Carousel/Carousel.tsx",
-                                lineNumber: 133,
+                                lineNumber: 134,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/components/Carousel/Carousel.tsx",
-                            lineNumber: 132,
+                            lineNumber: 133,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -196,7 +197,7 @@ function Carousel() {
                                     children: carouselItems[idxItemAtual].subtitle
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/Carousel/Carousel.tsx",
-                                    lineNumber: 137,
+                                    lineNumber: 138,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -204,7 +205,7 @@ function Carousel() {
                                     children: carouselItems[idxItemAtual].title
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/Carousel/Carousel.tsx",
-                                    lineNumber: 138,
+                                    lineNumber: 139,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -212,7 +213,7 @@ function Carousel() {
                                     children: carouselItems[idxItemAtual].description
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/Carousel/Carousel.tsx",
-                                    lineNumber: 139,
+                                    lineNumber: 140,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -224,19 +225,19 @@ function Carousel() {
                                             icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$fortawesome$2f$free$2d$solid$2d$svg$2d$icons$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["faAngleRight"]
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/Carousel/Carousel.tsx",
-                                            lineNumber: 144,
+                                            lineNumber: 145,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/Carousel/Carousel.tsx",
-                                    lineNumber: 140,
+                                    lineNumber: 141,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/Carousel/Carousel.tsx",
-                            lineNumber: 136,
+                            lineNumber: 137,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -252,28 +253,28 @@ function Carousel() {
                                 }
                             }, void 0, false, {
                                 fileName: "[project]/src/components/Carousel/Carousel.tsx",
-                                lineNumber: 149,
+                                lineNumber: 150,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/components/Carousel/Carousel.tsx",
-                            lineNumber: 148,
+                            lineNumber: 149,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/Carousel/Carousel.tsx",
-                    lineNumber: 131,
+                    lineNumber: 132,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/Carousel/Carousel.tsx",
-                lineNumber: 128,
+                lineNumber: 129,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/components/Carousel/Carousel.tsx",
-            lineNumber: 120,
+            lineNumber: 121,
             columnNumber: 36
         }, this)
     }, void 0, false);

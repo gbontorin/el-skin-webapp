@@ -1,6 +1,7 @@
 import React from 'react';
-import styles from './styles.module.css'; // Assuming you have a CSS module for styles
+import styles from './styles.module.css';
 import About1 from '../../assets/about1.png';
+import Image from 'next/image';
  
 const About: React.FC = () => {
   return (
@@ -12,39 +13,41 @@ const About: React.FC = () => {
           <div className={styles.about_section}>
             <h2>QUEM SOMOS</h2>
             <p>
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-              accusantium doloremque laudantium, totam rem aperiam, eaque
-              ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
-              dicta sunt explicabo.
+              Quem somos se refere a uma seção em um site ou documento que
+              apresenta a identidade e a história de uma empresa, organização ou
+              indivíduo. É um espaço onde se descreve a missão, visão, valores e
+              propósitos, além de detalhes sobre o que a entidade faz e como o
+              faz.
             </p>
           </div>
  
           <div className={styles.about_section}>
             <h2>POR QUE EXISTIMOS?</h2>
             <p>
-              Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-              aut fugit, sed quia consequuntur magni dolores eos qui ratione
-              voluptatem sequi nesciunt.
+              A questão de por que existimos é uma das perguntas mais
+              fundamentais e complexas da filosofia e da existência humana. Não
+              há uma única resposta definitiva, pois diferentes perspectivas e
+              crenças oferecem interpretações diversas. Algumas abordagens
+              sugerem que nossa existência tem um propósito definido, enquanto
+              outras veem a existência como um fenômeno sem um propósito
+              intrínseco.
             </p>
           </div>
  
           <div className={styles.about_section}>
             <h2>O QUE A GENTE FAZ?</h2>
-            <p>
-              Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-              consectetur, adipisci velit, sed quia non numquam eius modi
-              tempora incidunt ut labore et dolore magnam aliquam quaerat
-              voluptatem.
-            </p>
+            <p>O que dá, quando dá.</p>
           </div>
         </div>
  
         <div className={styles.about_images_section}>
           <div className={styles.product_image_container}>
-            <img
+            <Image
               src={About1}
               alt="Produto AL SKIN sendo aplicado"
               className={styles.product_image}
+              width={200}
+              height={200}
             />
           </div>
         </div>
