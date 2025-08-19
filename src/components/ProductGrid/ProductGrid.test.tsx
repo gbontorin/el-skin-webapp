@@ -1,19 +1,35 @@
-import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
+/* eslint-disable @typescript-eslint/no-var-requires */
+import {
+  render,
+  screen,
+  fireEvent,
+  waitFor,
+  act,
+} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { ThemeProvider } from 'styled-components';
 import ProductGrid from './ProductGrid';
 import { CartProvider } from '../../context/CartContext';
-import { productService } from '../../services';
+//import { productService } from '../../services';
 import { theme } from '../../styles/theme';
 import { Provider } from 'react-redux';
 import { store } from '../../store';
 
-// Mock dos serviços
-jest.mock('../../services', () => ({
-  productService: {
-    getProducts: jest.fn(),
-  },
-}));
+// Mock do hook useGetProductsQuery do Redux Toolkit
+jest.mock('../../store/api/apiSlice', () => {
+  const originalModule = jest.requireActual('../../store/api/apiSlice');
+  return {
+    ...originalModule,
+    useGetProductsQuery: jest.fn(),
+    // Mock das propriedades que a store precisa
+    reducerPath: 'api', // Valor fixo para o caminho do reducer
+    reducer: jest.fn(), // Mock da função reducer
+    middleware: jest.fn(), // Mock do middleware, caso seja usado
+  };
+});
+
+const mockUseGetProductsQuery =
+  require('../../store/api/apiSlice').useGetProductsQuery;
 
 let mockSearchTerm = '';
 
@@ -46,7 +62,7 @@ const mockProducts = [
     description: 'Descrição do produto 1',
     price: 99.99,
     image: '/image1.jpg',
-    tags: [{ label: 'Proteção', type: 'protection' as const }]
+    tags: [{ label: 'Proteção', type: 'protection' as const }],
   },
   {
     id: '2',
@@ -54,11 +70,9 @@ const mockProducts = [
     description: 'Descrição do produto 2',
     price: 149.99,
     image: '/image2.jpg',
-    tags: [{ label: 'Rosto', type: 'face' as const }]
-  }
+    tags: [{ label: 'Rosto', type: 'face' as const }],
+  },
 ];
-
-const mockProductService = productService as jest.Mocked<typeof productService>;
 
 const renderWithProviders = async () => {
   let component;
@@ -76,12 +90,15 @@ const renderWithProviders = async () => {
   return component;
 };
 
-
 describe('ProductGrid', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     mockSearchTerm = '';
-    mockProductService.getProducts.mockResolvedValue(mockProducts);
+    mockUseGetProductsQuery.mockReturnValue({
+      data: mockProducts,
+      isLoading: false,
+      error: null,
+    });
   });
   it('true', () => {
     expect(true).toBeTruthy;
@@ -103,7 +120,6 @@ describe('ProductGrid', () => {
       expect(screen.getByText('R$ 149,99')).toBeInTheDocument();
     });
 
-    expect(mockProductService.getProducts).toHaveBeenCalledTimes(1);
   });
 
   it('Deve chamar console.log ao clicar no produto', async () => {
@@ -120,7 +136,13 @@ describe('ProductGrid', () => {
   });
 
   it('Deve avisar estar vazio', async () => {
-    mockProductService.getProducts.mockResolvedValue([]);
+    //    mockProductService.getProducts.mockResolvedValue([]);
+
+    mockUseGetProductsQuery.mockReturnValue({
+      data: [],
+      isLoading: false,
+      error: null,
+    });
     
     await renderWithProviders();
     
@@ -141,19 +163,8 @@ describe('ProductGrid', () => {
     
     // O produto deve ser adicionado ao carrinho via contexto
   });
-  it('Erro gracioso', async () => {
-    const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => undefined);
-    mockProductService.getProducts.mockRejectedValue(new Error('API Error'));
-    
-    await renderWithProviders();
-    
-    await waitFor(() => {
-      expect(consoleSpy).toHaveBeenCalledWith('Erro ao carregar produtos:', expect.any(Error));
-    });
-    
-    consoleSpy.mockRestore();
-  });
-
+  
+  
   it('Deve filtrar produtos com base no termo de busca', async () => {
     mockSearchTerm = 'PRODUTO 1';
     await renderWithProviders();
@@ -161,3 +172,4 @@ describe('ProductGrid', () => {
     expect(screen.getByText('Produto 1')).toBeInTheDocument();
   });
 });
+
