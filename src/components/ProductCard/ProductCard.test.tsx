@@ -42,31 +42,3 @@ test('Testando Renderizar Product Card', () => {
   expect(screen.getByText('R$ 99,99')).toBeInTheDocument();
   
 });
-
-/*
-
-test('Testando Click no Product Card', () => {
-
-  //Act
-  render(<ProductCard {...mockProps} />);
-  const card = screen.getByTestId('product-card');
-  fireEvent.click(card);
-  //assert
-  expect(mockProps.onProductClick).toHaveBeenCalledWith('1');
-  expect(mockProps.onProductClick).toHaveBeenCalledTimes(1);
-
-
-});
-
-test('Testando Click no Buy Button', () => {
-
-  //Act
-  render(<ProductCard {...mockProps} />);
-  const card = screen.getByTestId('product-buy-button');
-  fireEvent.click(card);
-  //assert
-  expect(mockProps.onProductClick).toHaveBeenCalledWith('1');
-  expect(mockProps.onProductClick).toHaveBeenCalledTimes(1);
-});
-
-*/
